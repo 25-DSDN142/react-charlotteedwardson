@@ -18,21 +18,26 @@ function drawInteraction(faces, hands) {
     let indexFingerTipX = hand.index_finger_tip.x;
     let indexFingerTipY = hand.index_finger_tip.y;
 
-    //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
-    //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
+    let pinkyFingerTipX = hand.pinky_finger_tip.x;
+    let pinkyFingerTipY = hand.pinky_finger_tip.y;
 
+     let middleFingerTipX = hand.middle_finger_tip.x;
+     let middleFingerTipY = hand.middle_finger_tip.y;
     /*
     Start drawing on the hands here
     */
 
-    fill(225, 225, 0);
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
-
+    // fill(110, 125, 155);
+    // ellipse(pinkyFingerTipX, pinkyFingerTipY, 30, 30);
+    // ellipse(middleFingerTipX, middleFingerTipY, 30, 30);
+    // strokeWeight(5);
+    // line(indexFingerTipX, indexFingerTipY, middleFingerTipX, middleFingerTipY);
+    
     // drawPoints(hand)
 
-    //fingerPuppet(indexFingerTipX, indexFingerTipY);
+    // fingerPuppet(indexFingerTipX, indexFingerTipY);
 
-    //chameleonHandPuppet(hand)
+    flowerHandPuppet(hand)
 
     /*
     Stop drawing on the hands here
@@ -78,7 +83,7 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
 
 }
 
-function chameleonHandPuppet(hand) {
+function flowerHandPuppet(hand) {
   // Find the index finger tip and thumb tip
   // let finger = hand.index_finger_tip;
 
@@ -91,16 +96,27 @@ function chameleonHandPuppet(hand) {
   // Calculate the pinch "distance" between finger and thumb
   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
 
-  // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 200);
-  stroke(0);
-  strokeWeight(2);
-  circle(centerX, centerY, pinch);
+  //variables for flower
+  let flowerSize = pinch; //flower size will be controlled by pinch distance
 
-  let indexFingerTipX = hand.index_finger_tip.x;
-  let indexFingerTipY = hand.index_finger_tip.y;
-  fill(0)
-  circle(indexFingerTipX, indexFingerTipY, 20);
+  //petals drawing
+  noStroke();
+  fill(255, 160, 180);
+
+  ellipse(centerX, centerY - flowerSize * 0.6, flowerSize * 0.8, flowerSize * 1.2);
+  ellipse(centerX, centerY + flowerSize * 0.6, flowerSize * 0.8, flowerSize * 1.2);
+  ellipse(centerX - flowerSize * 0.6, centerY, flowerSize * 1.2, flowerSize * 0.8);
+  ellipse(centerX + flowerSize * 0.6, centerY, flowerSize * 1.2, flowerSize * 0.8);
+
+  // flower center drawing
+  noStroke();
+  fill(255, 220, 100);
+  circle(centerX, centerY, flowerSize);
+
+  // let indexFingerTipX = hand.index_finger_tip.x;
+  // let indexFingerTipY = hand.index_finger_tip.y;
+  // fill(0)
+  // circle(indexFingerTipX, indexFingerTipY, 20);
 
 }
 
