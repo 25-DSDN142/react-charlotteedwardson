@@ -15,29 +15,19 @@ function drawInteraction(faces, hands) {
     }
 
     // This is how to load in the x and y of a point on the hand.
-<<<<<<< HEAD
+
     let middleFingerTipX = hand.middle_finger_tip.x;
     let middleFingerTipY = hand.middle_finger_tip.y;
-=======
-    let indexFingerTipX = hand.index_finger_tip.x;
-    let indexFingerTipY = hand.index_finger_tip.y;
 
-    //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
-    //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
-
->>>>>>> parent of 74aa997 (Flower chameleon)
     /*
     Start drawing on the hands here
     */
-
-    fill(225, 225, 0);
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
 
     // drawPoints(hand)
 
     //fingerPuppet(indexFingerTipX, indexFingerTipY);
 
-    //chameleonHandPuppet(hand)
+    flowerHandPuppet(hand)
 
     /*
     Stop drawing on the hands here
@@ -83,16 +73,10 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
 
 }
 
-<<<<<<< HEAD
 function flowerHandPuppet(hand) {
-  // Find the middle finger tip and thumb tip
-=======
-function chameleonHandPuppet(hand) {
-  // Find the index finger tip and thumb tip
-  // let finger = hand.index_finger_tip;
+  // Find the pinky finger tip and thumb tip
 
->>>>>>> parent of 74aa997 (Flower chameleon)
-  let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
+  let finger = hand.pinky_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
   let thumb = hand.thumb_tip;
   
   // Draw circles at finger positions
@@ -100,17 +84,21 @@ function chameleonHandPuppet(hand) {
   let centerY = (finger.y + thumb.y) / 2;
   // Calculate the pinch "distance" between finger and thumb
   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
+  let flowerSize = pinch;
 
-  // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 200);
-  stroke(0);
-  strokeWeight(2);
-  circle(centerX, centerY, pinch);
+   //petals drawing
+  noStroke();
+  fill(255, 160, 180);
 
-  let indexFingerTipX = hand.index_finger_tip.x;
-  let indexFingerTipY = hand.index_finger_tip.y;
-  fill(0)
-  circle(indexFingerTipX, indexFingerTipY, 20);
+  ellipse(centerX, centerY - flowerSize * 0.6, flowerSize * 0.8, flowerSize * 1.2);
+  ellipse(centerX, centerY + flowerSize * 0.6, flowerSize * 0.8, flowerSize * 1.2);
+  ellipse(centerX - flowerSize * 0.6, centerY, flowerSize * 1.2, flowerSize * 0.8);
+  ellipse(centerX + flowerSize * 0.6, centerY, flowerSize * 1.2, flowerSize * 0.8);
+
+  // flower center drawing
+  noStroke();
+  fill(255, 220, 100);
+  circle(centerX, centerY, flowerSize);
 
 }
 
