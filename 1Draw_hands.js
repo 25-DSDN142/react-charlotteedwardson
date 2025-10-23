@@ -95,10 +95,28 @@ function flowerHandPuppet(hand) {
   ellipse(centerX - flowerSize * 0.6, centerY, flowerSize * 1.2, flowerSize * 0.8);
   ellipse(centerX + flowerSize * 0.6, centerY, flowerSize * 1.2, flowerSize * 0.8);
 
+
+  // digonal, slightly see-through petals
+  fill(255, 160, 180, 160); // pink with alpha
+  let d = flowerSize * 0.45;
+  // diagonal petals
+  ellipse(centerX - d, centerY - d, flowerSize * 0.9, flowerSize * 0.9);
+  ellipse(centerX + d, centerY - d, flowerSize * 0.9, flowerSize * 0.9);
+  ellipse(centerX - d, centerY + d, flowerSize * 0.9, flowerSize * 0.9);
+  ellipse(centerX + d, centerY + d, flowerSize * 0.9, flowerSize * 0.9);
+
   // flower center drawing
   noStroke();
   fill(255, 220, 100);
   circle(centerX, centerY, flowerSize);
+
+  noStroke();
+  fill(255, 270, 150);
+  circle(centerX, centerY, flowerSize-50);
+
+  noStroke();
+  fill(255, 220, 100);
+  circle(centerX, centerY, flowerSize-100);
 
 }
 
