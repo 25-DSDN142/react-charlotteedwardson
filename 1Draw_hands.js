@@ -15,14 +15,8 @@ function drawInteraction(faces, hands) {
     }
 
     // This is how to load in the x and y of a point on the hand.
-    let indexFingerTipX = hand.index_finger_tip.x;
-    let indexFingerTipY = hand.index_finger_tip.y;
-
-    let pinkyFingerTipX = hand.pinky_finger_tip.x;
-    let pinkyFingerTipY = hand.pinky_finger_tip.y;
-
-     let middleFingerTipX = hand.middle_finger_tip.x;
-     let middleFingerTipY = hand.middle_finger_tip.y;
+    let middleFingerTipX = hand.middle_finger_tip.x;
+    let middleFingerTipY = hand.middle_finger_tip.y;
     /*
     Start drawing on the hands here
     */
@@ -84,12 +78,10 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
 }
 
 function flowerHandPuppet(hand) {
-  // Find the index finger tip and thumb tip
-  // let finger = hand.index_finger_tip;
-
+  // Find the middle finger tip and thumb tip
   let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
   let thumb = hand.thumb_tip;
-
+  
   // Draw circles at finger positions
   let centerX = (finger.x + thumb.x) / 2;
   let centerY = (finger.y + thumb.y) / 2;
